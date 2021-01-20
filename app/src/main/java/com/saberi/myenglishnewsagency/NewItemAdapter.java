@@ -53,6 +53,8 @@ import retrofit2.http.Url;
 
 public class NewItemAdapter extends RecyclerView.Adapter<NewItemAdapter.ItemViewHolder> {
 
+//    this is a new test
+
     private Context context;
     private List<Article> items;
 
