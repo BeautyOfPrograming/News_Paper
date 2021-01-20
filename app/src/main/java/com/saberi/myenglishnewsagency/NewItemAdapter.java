@@ -20,6 +20,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +33,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.saberi.myenglishnewsagency.retrofit.DownloadImage;
 import com.saberi.myenglishnewsagency.retrofit.models.Article;
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
 
@@ -102,8 +105,21 @@ public class NewItemAdapter extends RecyclerView.Adapter<NewItemAdapter.ItemView
         itemViewHolder.date.setText(date);
 //        itemViewHolder.url.setText(url)
         if (imageUrl != null) {
+            itemViewHolder.progressBar.setVisibility(View.VISIBLE);
 //            itemViewHolder.imageUrl.setScaleType(ImageView.ScaleType.CENTER);
-            Picasso.get().load(imageUrl).into(itemViewHolder.imageUrl);
+            Picasso.get().load(imageUrl).into(itemViewHolder.imageUrl, new Callback() {
+                @Override
+                public void onSuccess() {
+                    itemViewHolder.progressBar.setVisibility(View.GONE);
+
+                }
+
+                @Override
+                public void onError(Exception e) {
+
+                }
+            });
+
 
             Log.e("mypicasso_: ", imageUrl);
             Toast.makeText(context, imageUrl, Toast.LENGTH_LONG).show();
@@ -136,7 +152,7 @@ public class NewItemAdapter extends RecyclerView.Adapter<NewItemAdapter.ItemView
                         Intent shareIntent = new Intent();
                         shareIntent.setAction(Intent.ACTION_SEND);
                         shareIntent.putExtra(Intent.EXTRA_STREAM, bmpUri);
-                        shareIntent.putExtra(Intent.EXTRA_TEXT,title+"  "+url);
+                        shareIntent.putExtra(Intent.EXTRA_TEXT, title + "  " + url);
 
                         shareIntent.setType("image/*");
 
@@ -185,6 +201,7 @@ public class NewItemAdapter extends RecyclerView.Adapter<NewItemAdapter.ItemView
         ImageView imageUrl;
         Button readMore, shareMe;
         ListView listView;
+        ProgressBar progressBar;
 
         public ItemViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -197,6 +214,7 @@ public class NewItemAdapter extends RecyclerView.Adapter<NewItemAdapter.ItemView
 
             readMore = itemView.findViewById(R.id.readMore);
             shareMe = itemView.findViewById(R.id.shareMe);
+            progressBar = itemView.findViewById(R.id.progress);
 //            return  new ItemViewHolder(itemView);
 
             listView = (ListView) itemView.findViewById(R.id.lstViewImages);

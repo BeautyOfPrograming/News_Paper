@@ -28,13 +28,12 @@
             android:id="@+id/imageCardView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+
+
             app:cardCornerRadius="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-
-            app:layout_constraintTop_toTopOf="parent"
-
-            >
+            app:layout_constraintTop_toTopOf="parent">
 
 
             <ImageView
@@ -52,6 +51,17 @@
 
                 />
 
+
+            <ProgressBar
+                android:id="@+id/progress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+
+                />
 
         </androidx.cardview.widget.CardView>
 
@@ -116,6 +126,7 @@
 
             app:layout_constraintTop_toBottomOf="@id/title"
             app:layout_constraintVertical_bias="0.825" />
+
         <Button
             android:id="@+id/shareMe"
             android:layout_width="100dp"
@@ -131,11 +142,11 @@
             app:layout_constraintTop_toBottomOf="@id/title"
             app:layout_constraintVertical_bias="0.825" />
 
-       <LinearLayout
-           android:layout_width="match_parent"
-           android:layout_height="150dp"
-           android:orientation="vertical"
-           app:layout_constraintTop_toBottomOf="@+id/mainConstaint"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/mainConstaint" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
