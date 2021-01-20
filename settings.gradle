@@ -1,0 +1,5 @@
+include ':lib'
+include ':my-ion:ion-master'
+include ':ion-master'
+include ':app',':subProject:ion-master'
+rootProject.name = "My English news Agency"

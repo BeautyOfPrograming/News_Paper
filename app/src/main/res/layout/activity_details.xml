@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainConstaint"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DetailsActivity">
+
+
+    <TextView
+        android:id="@+id/displayNewsContext"
+        android:layout_width="wrap_content"
+
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:text="
+GENERATED LOREM IPSUM
+2
+
+PARAGRAPHS
+
+COPY
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Erat velit scelerisque in dictum. Eu feugiat pretium nibh ipsum consequat nisl vel. Sed felis eget velit aliquet sagittis id consectetur. Congue eu consequat ac felis. Sodales ut eu sem integer vitae justo eget magna fermentum. Facilisis sed odio morbi quis commodo odio aenean sed. Gravida dictum fusce ut placerat orci nulla. Proin sed libero enim sed. Tristique risus nec feugiat in fermentum posuere urna. Urna molestie at elementum eu. Interdum consectetur libero id faucibus nisl tincidunt. A iaculis at erat pellentesque. Felis imperdiet proin fermentum leo vel orci. In nisl nisi scelerisque eu"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <WebView
+        android:id="@+id/webView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/displayNewsContext" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
