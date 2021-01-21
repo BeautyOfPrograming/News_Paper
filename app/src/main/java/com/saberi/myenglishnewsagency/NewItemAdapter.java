@@ -16,6 +16,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -135,7 +137,9 @@ public class NewItemAdapter extends RecyclerView.Adapter<NewItemAdapter.ItemView
             public void onClick(View view) {
 
                 try {
-
+                    // Set animation to shareButton
+                    Animation rotation = AnimationUtils.loadAnimation(context, R.anim.rotation);
+                    itemViewHolder.shareMe.startAnimation(rotation);
                     URL url1 = new URL(imageUrl);
                     String host = url1.getHost();
                     String path = url1.getPath();
@@ -164,11 +168,6 @@ public class NewItemAdapter extends RecyclerView.Adapter<NewItemAdapter.ItemView
 
                 } catch (MalformedURLException e) {
                     Log.e("er0", "er0");
-                    e.printStackTrace();
-                } catch (IOException e) {
-
-                    Log.e("er1", "er1");
-
                     e.printStackTrace();
                 }
 
