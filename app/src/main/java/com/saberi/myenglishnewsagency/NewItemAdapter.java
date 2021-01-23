@@ -179,6 +179,9 @@ public class NewItemAdapter extends RecyclerView.Adapter<NewItemAdapter.ItemView
         itemViewHolder.readMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // The below tow lines are for rotating readMore Button
+                Animation animation = AnimationUtils.loadAnimation(context,R.anim.rotation);
+                itemViewHolder.readMore.startAnimation(animation);
 
                 Intent intent = new Intent(context, DetailsActivity.class);
 
