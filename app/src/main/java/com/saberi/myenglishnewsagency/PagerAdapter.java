@@ -36,9 +36,9 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
     public CharSequence getPageTitle(int position) {
 //        return super.getPageTitle(position);
         if (position == 0)
-            return "VICE-News";
+            return "US";
         else if (position == 1)
-            return "Ary News";  //ary-news
+            return "US health News";  //ary-news
         else if (position == 2)
             return "BBC News";  //bbc-news
         else if (position == 3)

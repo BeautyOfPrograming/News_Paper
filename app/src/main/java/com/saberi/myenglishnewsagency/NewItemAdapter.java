@@ -124,7 +124,7 @@ public class NewItemAdapter extends RecyclerView.Adapter<NewItemAdapter.ItemView
 
 
             Log.e("mypicasso_: ", imageUrl);
-            Toast.makeText(context, imageUrl, Toast.LENGTH_LONG).show();
+            Toast.makeText(context, title, Toast.LENGTH_LONG).show();
         }
 //         Picasso.get().load(imageUrl).into(itemViewHolder.imageUrl);
         else {

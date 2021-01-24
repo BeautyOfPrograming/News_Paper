@@ -71,28 +71,29 @@ public class MainLayoutFragment extends androidx.fragment.app.Fragment {
 
         String urltemp = "";
         if (pos == 0) {
-            urltemp = "/v2/top-headlines?sources=vice-news&apiKey=9e1ac8704e124f32ab6b70e9de3a56c8";
+//            urltemp = "/v2/top-headlines?sources=vice-news&apiKey=9e1ac8704e124f32ab6b70e9de3a56c8";
+            urltemp = "v2/top-headlines?country=us&pageSize=10&apiKey=7fc43c3ef4314a748fbcd1a9727ad492";
         } else if (pos == 1)
 //            urltemp = "/v2/top-headlines?sources=ary-news&apiKey=9e1ac8704e124f32ab6b70e9de3a56c8";
-            urltemp = "/v2/top-headlines?sources=vice-news&apiKey=9e1ac8704e124f32ab6b70e9de3a56c8";
+            urltemp = "v2/top-headlines?country=us&category=health&pageSize=10&apiKey=7fc43c3ef4314a748fbcd1a9727ad492";
         else if (pos == 2)
-                urltemp = "/v2/top-headlines?sources=abc-news&apiKey=9e1ac8704e124f32ab6b70e9de3a56c8";
+                urltemp = "/v2/top-headlines?sources=abc-news&pageSize=10&apiKey=9e1ac8704e124f32ab6b70e9de3a56c8";
         else if (pos == 3)
-            urltemp = "/v2/top-headlines?sources=bbc-sport&apiKey=9e1ac8704e124f32ab6b70e9de3a56c8";
+            urltemp = "/v2/top-headlines?sources=bbc-sport&pageSize=10&apiKey=9e1ac8704e124f32ab6b70e9de3a56c8";
         else if (pos == 4)
-            urltemp = "/v2/top-headlines?sources=usa-today&apiKey=9e1ac8704e124f32ab6b70e9de3a56c8";
+            urltemp = "/v2/top-headlines?sources=usa-today&pageSize=10&apiKey=9e1ac8704e124f32ab6b70e9de3a56c8";
         else if (pos == 5)
-            urltemp = "/v2/top-headlines?sources=cnn&apiKey=9e1ac8704e124f32ab6b70e9de3a56c8";
+            urltemp = "/v2/top-headlines?sources=cnn&pageSize=10&apiKey=9e1ac8704e124f32ab6b70e9de3a56c8";
         else if (pos == 6)
             urltemp = "/v2/top-headlines?sources=fox-news&apiKey=9e1ac8704e124f32ab6b70e9de3a56c8";
         else if (pos == 7)
-            urltemp = "/v2/top-headlines?sources=google-news&apiKey=9e1ac8704e124f32ab6b70e9de3a56c8";
+            urltemp = "/v2/top-headlines?sources=google-news&pageSize=10&apiKey=9e1ac8704e124f32ab6b70e9de3a56c8";
         else if (pos == 8)
-            urltemp = "/v2/top-headlines?sources=the-verge&apiKey=9e1ac8704e124f32ab6b70e9de3a56c8";
+            urltemp = "/v2/top-headlines?sources=the-verge&pageSize=10&apiKey=9e1ac8704e124f32ab6b70e9de3a56c8";
         else if (pos == 9)
-            urltemp = "/v2/top-headlines?sources=news24&apiKey=9e1ac8704e124f32ab6b70e9de3a56c8";
+            urltemp = "/v2/top-headlines?sources=news24&pageSize=10&apiKey=9e1ac8704e124f32ab6b70e9de3a56c8";
         else {
-            urltemp = "/v2/top-headlines?sources=abc-news&apiKey=9e1ac8704e124f32ab6b70e9de3a56c8";
+            urltemp = "/v2/top-headlines?sources=abc-news&pageSize=10&apiKey=9e1ac8704e124f32ab6b70e9de3a56c8";
         }
 
 
@@ -121,7 +122,7 @@ public class MainLayoutFragment extends androidx.fragment.app.Fragment {
 
 //                Log.e("size_of_object", size + "");
 
-                for (int i = 0; i < 10; i++) {
+                for (int i = 0; i < 9; i++) {
 
                     Article article = response.body().getArticles().get(i);
 
