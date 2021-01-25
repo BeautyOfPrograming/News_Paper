@@ -101,7 +101,7 @@ public class NewItemAdapter extends RecyclerView.Adapter<NewItemAdapter.ItemView
         String url = news.getUrl();
         String imageUrl = news.getUrlToImage();
 
-        itemViewHolder.title.setText(title);
+        itemViewHolder.title.setText(content);
         itemViewHolder.author.setText(author);
         itemViewHolder.content.setText(content);
         itemViewHolder.date.setText(date);
@@ -180,7 +180,7 @@ public class NewItemAdapter extends RecyclerView.Adapter<NewItemAdapter.ItemView
             @Override
             public void onClick(View view) {
                 // The below tow lines are for rotating readMore Button
-                Animation animation = AnimationUtils.loadAnimation(context,R.anim.read_more_rotation);
+                Animation animation = AnimationUtils.loadAnimation(context, R.anim.read_more_rotation);
                 itemViewHolder.readMore.startAnimation(animation);
 
                 Intent intent = new Intent(context, DetailsActivity.class);

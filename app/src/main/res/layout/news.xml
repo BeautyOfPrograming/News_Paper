@@ -99,7 +99,7 @@
 
             android:layout_marginTop="13dp"
             android:layout_marginBottom="10dp"
-
+            android:textColor="@color/black"
             android:gravity="center"
             android:text="Four victims were killed and two others were injured in a shooting rampage that began in Chicago Saturday and ended when police in Evanston shot and killed the…"
             android:textSize="22sp"

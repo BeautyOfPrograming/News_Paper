@@ -75,9 +75,10 @@ public class MainLayoutFragment extends androidx.fragment.app.Fragment {
             urltemp = "v2/top-headlines?country=us&pageSize=10&apiKey=7fc43c3ef4314a748fbcd1a9727ad492";
         } else if (pos == 1)
 //            urltemp = "/v2/top-headlines?sources=ary-news&apiKey=9e1ac8704e124f32ab6b70e9de3a56c8";
-            urltemp = "v2/top-headlines?country=us&category=health&pageSize=10&apiKey=7fc43c3ef4314a748fbcd1a9727ad492";
+            urltemp = "v2/top-headlines?sources=bbc-news&apiKey=7fc43c3ef4314a748fbcd1a9727ad492";
         else if (pos == 2)
-                urltemp = "/v2/top-headlines?sources=abc-news&pageSize=10&apiKey=9e1ac8704e124f32ab6b70e9de3a56c8";
+                urltemp = "/v2/top-headlines?sources=abc-news-au&pageSize=10&apiKey=9e1ac8704e124f32ab6b70e9de3a56c8";
+//                urltemp = "https://newsapi.org/v2/sources?language=en&apiKey=7fc43c3ef4314a748fbcd1a9727ad492";
         else if (pos == 3)
             urltemp = "/v2/top-headlines?sources=bbc-sport&pageSize=10&apiKey=9e1ac8704e124f32ab6b70e9de3a56c8";
         else if (pos == 4)
