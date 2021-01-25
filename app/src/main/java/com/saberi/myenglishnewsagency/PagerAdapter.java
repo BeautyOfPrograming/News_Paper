@@ -40,7 +40,7 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
         else if (position == 1)
             return "US health News";  //ary-news
         else if (position == 2)
-            return "ABC Newso";  //bbc-news
+            return "ABC News";  //bbc-news
         else if (position == 3)
             return "BBC Sport"; //bbc-sport
         else if (position == 4)

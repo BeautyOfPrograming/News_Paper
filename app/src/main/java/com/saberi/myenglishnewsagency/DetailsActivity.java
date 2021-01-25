@@ -16,7 +16,7 @@ import com.google.android.material.tabs.TabLayout;
 public class DetailsActivity extends AppCompatActivity {
 
     TextView displayNewsContext;
-    String url;
+    String url, pressName;
     WebView webView;
 
     @Override
@@ -30,8 +30,13 @@ public class DetailsActivity extends AppCompatActivity {
         webView = findViewById(R.id.webView);
         Intent intent = getIntent();
         url = intent.getStringExtra("url");
+        pressName = intent.getStringExtra("pressname");
+        ActionBar bar = getSupportActionBar();
+        bar.setTitle(pressName);
         webView.loadUrl(url);
 
+
     }
+
 
 }

@@ -35,6 +35,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.saberi.myenglishnewsagency.retrofit.DownloadImage;
 import com.saberi.myenglishnewsagency.retrofit.models.Article;
+import com.saberi.myenglishnewsagency.retrofit.models.Source;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
@@ -94,6 +95,8 @@ public class NewItemAdapter extends RecyclerView.Adapter<NewItemAdapter.ItemView
 
         final Article news = items.get(i);
 
+        String pressName = items.get(i).getSource().getId();
+
         String title = news.getTitle();
         String content = news.getDescription();
         String author = news.getAuthor();
@@ -125,6 +128,8 @@ public class NewItemAdapter extends RecyclerView.Adapter<NewItemAdapter.ItemView
 
             Log.e("mypicasso_: ", imageUrl);
             Toast.makeText(context, title, Toast.LENGTH_LONG).show();
+
+
         }
 //         Picasso.get().load(imageUrl).into(itemViewHolder.imageUrl);
         else {
@@ -186,6 +191,7 @@ public class NewItemAdapter extends RecyclerView.Adapter<NewItemAdapter.ItemView
                 Intent intent = new Intent(context, DetailsActivity.class);
 
                 intent.putExtra("url", url);
+                intent.putExtra("pressname", pressName);
                 context.startActivity(intent);
 
             }
