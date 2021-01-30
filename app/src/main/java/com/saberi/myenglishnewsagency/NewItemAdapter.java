@@ -225,7 +225,7 @@ public class NewItemAdapter extends RecyclerView.Adapter<NewItemAdapter.ItemView
             progressBar = itemView.findViewById(R.id.progress);
 //            return  new ItemViewHolder(itemView);
 
-            listView = (ListView) itemView.findViewById(R.id.lstViewImages);
+//            listView = (ListView) itemView.findViewById(R.id.lstViewImages);
 
 
         }
