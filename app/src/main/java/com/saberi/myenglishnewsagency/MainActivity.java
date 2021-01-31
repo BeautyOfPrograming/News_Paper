@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 
+import com.google.android.gms.ads.MobileAds;
 import com.google.android.material.tabs.TabLayout;
 
 public class MainActivity extends AppCompatActivity {
@@ -26,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+//        MobileAds.initialize(getApplicationContext());
         myViewPager = findViewById(R.id.viewpager);
         myTableLayout = findViewById(R.id.tablelayout);
 
