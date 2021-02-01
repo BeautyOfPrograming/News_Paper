@@ -1,18 +1,34 @@
 package com.saberi.myenglishnewsagency;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.viewpager.widget.ViewPager;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 
+import com.google.android.gms.ads.AdError;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.OnUserEarnedRewardListener;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import com.google.android.gms.ads.reward.RewardItem;
+import com.google.android.gms.ads.reward.RewardedVideoAd;
+import com.google.android.gms.ads.reward.RewardedVideoAdListener;
+import com.google.android.gms.ads.rewarded.RewardedAd;
+import com.google.android.gms.ads.rewarded.RewardedAdCallback;
+import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback;
 import com.google.android.material.tabs.TabLayout;
 
 public class MainActivity extends AppCompatActivity {
@@ -21,6 +37,12 @@ public class MainActivity extends AppCompatActivity {
     TabLayout myTableLayout;
     PagerAdapter pagerAdapter;
 
+    private RewardedAd rewardedAd;
+
+    RewardedVideoAd rewardedVideoAd;
+
+    private RewardedAd mRewardedAd;
+    private final String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,11 +50,111 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-//        MobileAds.initialize(getApplicationContext());
+
+
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+                Toast.makeText(getApplicationContext(), " sucesfull ", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+        AdView mAdView;
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+    /*
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+
+        RewardedAd.load(this, "ca-app-pub-3940256099942544/5224354917",
+                adRequest, new RewardedAdLoadCallback(){
+                    @Override
+                    public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                        // Handle the error.
+                        Log.d(TAG, loadAdError.getMessage());
+                        mRewardedAd = null;
+                    }
+
+                    @Override
+                    public void onAdLoaded(@NonNull RewardedAd rewardedAd) {
+                        mRewardedAd = rewardedAd;
+                        Log.d(TAG, "onAdFailedToLoad");
+                    }
+                });
+
+
+
+        if (mRewardedAd != null) {
+            Activity activityContext = MainActivity.this;
+            mRewardedAd.show(activityContext, new OnUserEarnedRewardListener() {
+                @Override
+                public void onUserEarnedReward(@NonNull com.google.android.gms.ads.rewarded.RewardItem rewardItem) {
+                    // Handle the reward.
+                    Log.d("TAG", "The user earned the reward.");
+                    int rewardAmount = rewardItem.getAmount();
+                    String rewardType = rewardItem.getType();
+                }
+
+            });
+        } else {
+            Log.d("TAG", "The rewarded ad wasn't ready yet.");
+        }
+
+
+        //
+//        rewardedAd = new RewardedAd(getApplicationContext(),"
+//        ca-app-pub-3940256099942544/5224354917");
+//        RewardedAdLoadCallback adLoadCallback = new RewardedAdLoadCallback() {
+//            @Override
+//            public void onRewardedAdLoaded() {
+//                // Ad successfully loaded.
+//            }
+//
+//            @Override
+//            public void onRewardedAdFailedToLoad(LoadAdError adError) {
+//                // Ad failed to load.
+//            }
+//        };
+//        rewardedAd.loadAd(new AdRequest.Builder().build(), adLoadCallback);
+//
+//
+//        if (rewardedAd.isLoaded()) {
+//            Activity activityContext = MainActivity.this;
+//
+//            RewardedAdCallback adCallback = new RewardedAdCallback() {
+//                @Override
+//                public void onRewardedAdOpened() {
+//                    // Ad opened.
+//                }
+//
+//                @Override
+//                public void onRewardedAdClosed() {
+//                    // Ad closed.
+//                }
+//
+//                @Override
+//                public void onUserEarnedReward(@NonNull RewardItem reward) {
+//                    // User earned reward.
+//                }
+//
+//                @Override
+//                public void onRewardedAdFailedToShow(AdError adError) {
+//                    // Ad failed to display.
+//                }
+//            };
+//            rewardedAd.show(activityContext, adCallback);
+//        } else {
+//            Log.d("TAG", "The rewarded ad wasn't loaded yet.");
+//        }
+//
+
+  */
+
+
         myViewPager = findViewById(R.id.viewpager);
         myTableLayout = findViewById(R.id.tablelayout);
-
-
 
 
 //
@@ -40,9 +162,6 @@ public class MainActivity extends AppCompatActivity {
         myViewPager.setAdapter(pagerAdapter);
 
 //        myTableLayout.setTabsFromPagerAdapter(pagerAdapter);
-
-
-
 
 
         // to keep working together of tab layout and view pager
@@ -54,7 +173,7 @@ public class MainActivity extends AppCompatActivity {
 
         ActionBar bar = getSupportActionBar();
         bar.setTitle("News list");
-        bar.setBackgroundDrawable(new     ColorDrawable(Color.parseColor("blue")));
+        bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("blue")));
 
 
 //
@@ -67,10 +186,6 @@ public class MainActivity extends AppCompatActivity {
 //        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(TabLayout));
 
     }
-
-
-
-
 
 
 }
