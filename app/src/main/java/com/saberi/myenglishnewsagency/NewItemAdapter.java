@@ -33,6 +33,9 @@ import androidx.cursoradapter.widget.SimpleCursorAdapter;
 import androidx.loader.content.CursorLoader;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.saberi.myenglishnewsagency.retrofit.DownloadImage;
 import com.saberi.myenglishnewsagency.retrofit.models.Article;
 import com.saberi.myenglishnewsagency.retrofit.models.Source;
@@ -64,6 +67,10 @@ public class NewItemAdapter extends RecyclerView.Adapter<NewItemAdapter.ItemView
     private Context context;
     private List<Article> items;
 
+    // AdView Section
+    private AdRequest adRequest;
+    private AdView adView;
+
 
     //
     final String PROVIDER_NAME = "androidcontentproviderdemo.androidcontentprovider.images";
@@ -81,6 +88,10 @@ public class NewItemAdapter extends RecyclerView.Adapter<NewItemAdapter.ItemView
     @NonNull
     @Override
     public ItemViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+
+
+        MobileAds.initialize(context);
+
 
         view = LayoutInflater.from(
                 context).inflate(R.layout.news, viewGroup, false);
@@ -196,6 +207,12 @@ public class NewItemAdapter extends RecyclerView.Adapter<NewItemAdapter.ItemView
 
             }
         });
+
+
+        adRequest = new AdRequest.Builder().build();
+        itemViewHolder.adView.loadAd(adRequest);
+
+
     }
 
 
@@ -211,6 +228,8 @@ public class NewItemAdapter extends RecyclerView.Adapter<NewItemAdapter.ItemView
         ListView listView;
         ProgressBar progressBar;
 
+        AdView adView;
+
         public ItemViewHolder(@NonNull View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.title);
@@ -223,6 +242,7 @@ public class NewItemAdapter extends RecyclerView.Adapter<NewItemAdapter.ItemView
             readMore = itemView.findViewById(R.id.readMore);
             shareMe = itemView.findViewById(R.id.shareMe);
             progressBar = itemView.findViewById(R.id.progress);
+            adView = itemView.findViewById(R.id.adView);
 //            return  new ItemViewHolder(itemView);
 
 //            listView = (ListView) itemView.findViewById(R.id.lstViewImages);

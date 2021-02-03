@@ -63,7 +63,9 @@
 
                 />
 
+
         </androidx.cardview.widget.CardView>
+
 
         <TextView
             android:id="@+id/author"
@@ -99,9 +101,9 @@
 
             android:layout_marginTop="13dp"
             android:layout_marginBottom="10dp"
-            android:textColor="@color/black"
             android:gravity="center"
             android:text="Four victims were killed and two others were injured in a shooting rampage that began in Chicago Saturday and ended when police in Evanston shot and killed the…"
+            android:textColor="@color/black"
             android:textSize="22sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -118,8 +120,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:background="@drawable/button_shape"
-            app:backgroundTint="@color/purple_500"
             android:text="read more"
+            app:backgroundTint="@color/purple_500"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
@@ -143,11 +145,28 @@
             app:layout_constraintVertical_bias="0.825" />
 
         <LinearLayout
+            android:id="@+id/spacer"
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:orientation="vertical"
             app:layout_constraintTop_toBottomOf="@+id/mainConstaint" />
 
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/readMore"
+             app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include layout="@layout/addview"
+
+                />
+
+        </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
 </androidx.cardview.widget.CardView>
