@@ -211,7 +211,7 @@ public class NewItemAdapter extends RecyclerView.Adapter<NewItemAdapter.ItemView
 
         adRequest = new AdRequest.Builder().build();
         itemViewHolder.adView.loadAd(adRequest);
-
+//this is add to show the power of add
 
     }
 
