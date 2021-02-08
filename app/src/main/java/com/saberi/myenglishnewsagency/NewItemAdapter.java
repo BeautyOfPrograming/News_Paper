@@ -35,7 +35,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.reward.RewardedVideoAd;
+import com.google.android.gms.ads.rewarded.RewardedAd;
+import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback;
 import com.saberi.myenglishnewsagency.retrofit.DownloadImage;
 import com.saberi.myenglishnewsagency.retrofit.models.Article;
 import com.saberi.myenglishnewsagency.retrofit.models.Source;
@@ -60,6 +64,8 @@ import java.util.zip.Inflater;
 //import fr.tvbarthel.intentshare.IntentShare;
 import retrofit2.http.Url;
 
+import static androidx.constraintlayout.widget.Constraints.TAG;
+
 public class NewItemAdapter extends RecyclerView.Adapter<NewItemAdapter.ItemViewHolder> {
 
 //    this is a new test
@@ -70,6 +76,12 @@ public class NewItemAdapter extends RecyclerView.Adapter<NewItemAdapter.ItemView
     // AdView Section
     private AdRequest adRequest;
     private AdView adView;
+
+    //
+    private RewardedAd mRewardedAd;
+
+    private RewardedVideoAd AdMobrewardedVideoAd;
+    private String AdId = "ca-app-pub-3940256099942544/5224354917";
 
 
     //
@@ -91,6 +103,7 @@ public class NewItemAdapter extends RecyclerView.Adapter<NewItemAdapter.ItemView
 
 
         MobileAds.initialize(context);
+        loadRewardedVideoAd();
 
 
         view = LayoutInflater.from(
@@ -153,6 +166,9 @@ public class NewItemAdapter extends RecyclerView.Adapter<NewItemAdapter.ItemView
             public void onClick(View view) {
 
                 try {
+
+
+                    showRewardedVideoAd();
                     // Set animation to shareButton
                     Animation rotation = AnimationUtils.loadAnimation(context, R.anim.rotation);
                     itemViewHolder.shareMe.startAnimation(rotation);
@@ -210,7 +226,16 @@ public class NewItemAdapter extends RecyclerView.Adapter<NewItemAdapter.ItemView
 
 
         adRequest = new AdRequest.Builder().build();
+//        itemViewHolder.adView.loadAd(adRequest);
         itemViewHolder.adView.loadAd(adRequest);
+        itemViewHolder.adView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+
 //this is add to show the power of add
 
     }
@@ -309,6 +334,56 @@ public class NewItemAdapter extends RecyclerView.Adapter<NewItemAdapter.ItemView
             e.printStackTrace();
         }
         return bmpUri;
+    }
+
+
+    // added methods
+
+
+    void loadRewardedVideoAd() {
+
+        // initializing RewardedVideoAd Object
+
+        // RewardedVideoAd Constructor Takes Context as its  Argument
+
+        AdMobrewardedVideoAd = MobileAds.getRewardedVideoAdInstance(context);
+
+        // Loading Rewarded Video Ad
+
+        AdMobrewardedVideoAd.loadAd(AdId, new AdRequest.Builder().build());
+
+    }
+
+
+    public void showRewardedVideoAd() {
+
+
+
+
+
+        
+        if (AdMobrewardedVideoAd.isLoaded())//Checking If Ad is Loaded or Not
+
+        {
+
+
+            // showing Video Ad
+
+            Log.d("ad works","workssss");
+            Toast.makeText(context, "add is showing now", Toast.LENGTH_LONG).show();
+            AdMobrewardedVideoAd.show();
+
+        } else {
+
+            // Loading Rewarded Video Ad
+
+            AdMobrewardedVideoAd.loadAd("ca-app-pub-3940256099942544/5224354917", new AdRequest.Builder().build());
+
+            Toast.makeText(context, "add is not showing now", Toast.LENGTH_LONG).show();
+
+
+        }
+
     }
 
 

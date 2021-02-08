@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity implements OnUserEarnedRewar
     TabLayout myTableLayout;
     PagerAdapter pagerAdapter;
 
+
     private RewardedAd rewardedAd;
 
     private RewardedInterstitialAd rewardedInterstitialAd;
@@ -50,7 +51,6 @@ public class MainActivity extends AppCompatActivity implements OnUserEarnedRewar
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
 
 
@@ -294,8 +294,9 @@ public class MainActivity extends AppCompatActivity implements OnUserEarnedRewar
     @Override
     public void onUserEarnedReward(@NonNull RewardItem rewardItem) {
 
-        rewardedInterstitialAd.show(MainActivity.this,MainActivity.this);
+        rewardedInterstitialAd.show(MainActivity.this, MainActivity.this);
 
-                                Log.d("rewarded", "rewarded_add");
+        Log.d("rewarded", "rewarded_add");
     }
+
 }
