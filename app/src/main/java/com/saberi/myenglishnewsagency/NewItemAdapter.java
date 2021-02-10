@@ -268,6 +268,10 @@ public class NewItemAdapter extends RecyclerView.Adapter<NewItemAdapter.ItemView
             shareMe = itemView.findViewById(R.id.shareMe);
             progressBar = itemView.findViewById(R.id.progress);
             adView = itemView.findViewById(R.id.adView);
+
+            AdRequest adRequest = new AdRequest.Builder().build();
+            adView.loadAd(adRequest);
+
 //            return  new ItemViewHolder(itemView);
 
 //            listView = (ListView) itemView.findViewById(R.id.lstViewImages);

@@ -11,9 +11,12 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         ads:adSize="BANNER"
-        ads:adUnitId="ca-app-pub-1981355908194102/6734984451"
+        ads:adUnitId="ca-app-pub-3940256099942544/6300978111"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"></com.google.android.gms.ads.AdView>
 
+
+<!-- this is ad unit ad for test from google   ca-app-pub-3940256099942544/6300978111-->
+<!-- this is my own ad unit ad from  google admob  ca-app-pub-1981355908194102/6734984451-->
 </androidx.constraintlayout.widget.ConstraintLayout>
