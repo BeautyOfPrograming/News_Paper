@@ -81,7 +81,7 @@ public class NewItemAdapter extends RecyclerView.Adapter<NewItemAdapter.ItemView
     private RewardedAd mRewardedAd;
 
     private RewardedVideoAd AdMobrewardedVideoAd;
-    private String AdId = "ca-app-pub-3940256099942544/5224354917";
+    private String AdId = "ca-app-pub-1981355908194102/1488342268";
 
 
     //
@@ -151,13 +151,13 @@ public class NewItemAdapter extends RecyclerView.Adapter<NewItemAdapter.ItemView
 
 
             Log.e("mypicasso_: ", imageUrl);
-            Toast.makeText(context, title, Toast.LENGTH_LONG).show();
+//            Toast.makeText(context, title, Toast.LENGTH_LONG).show();
 
 
         }
 //         Picasso.get().load(imageUrl).into(itemViewHolder.imageUrl);
         else {
-            Picasso.get().load(R.drawable.sajad).into(itemViewHolder.imageUrl);
+            Picasso.get().load(R.drawable.news).into(itemViewHolder.imageUrl);
 
         }
 
@@ -272,6 +272,7 @@ public class NewItemAdapter extends RecyclerView.Adapter<NewItemAdapter.ItemView
             AdRequest adRequest = new AdRequest.Builder().build();
             adView.loadAd(adRequest);
 
+
 //            return  new ItemViewHolder(itemView);
 
 //            listView = (ListView) itemView.findViewById(R.id.lstViewImages);
@@ -381,7 +382,7 @@ public class NewItemAdapter extends RecyclerView.Adapter<NewItemAdapter.ItemView
 
             // Loading Rewarded Video Ad
 
-            AdMobrewardedVideoAd.loadAd("ca-app-pub-3940256099942544/5224354917", new AdRequest.Builder().build());
+            AdMobrewardedVideoAd.loadAd("ca-app-pub-1981355908194102~2792672342", new AdRequest.Builder().build());
 
             Toast.makeText(context, "add is not showing now", Toast.LENGTH_LONG).show();
 

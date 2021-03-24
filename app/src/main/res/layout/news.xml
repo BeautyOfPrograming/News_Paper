@@ -121,11 +121,11 @@
             android:layout_marginTop="8dp"
             android:background="@drawable/button_shape"
             android:text="read more"
+            android:textColor="@color/white"
             app:backgroundTint="@color/purple_500"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-
             app:layout_constraintTop_toBottomOf="@id/title"
             app:layout_constraintVertical_bias="0.825" />
 
@@ -136,7 +136,7 @@
             android:layout_marginTop="8dp"
             android:background="@drawable/ic_icons8_share"
 
-            android:text="read more"
+
 
 
             app:layout_constraintStart_toStartOf="parent"
@@ -152,13 +152,14 @@
             app:layout_constraintTop_toBottomOf="@+id/mainConstaint" />
 
         <LinearLayout
-            android:layout_marginTop="10dp"
-            app:layout_constraintTop_toBottomOf="@+id/readMore"
-             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
+            android:id="@+id/google_add_banner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_marginTop="10dp"
+            android:orientation="vertical"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/readMore">
 
             <include layout="@layout/addview"
 
@@ -166,7 +167,6 @@
 
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 
 </androidx.cardview.widget.CardView>

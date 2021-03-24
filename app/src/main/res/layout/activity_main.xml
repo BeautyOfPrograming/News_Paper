@@ -19,17 +19,17 @@
         android:layout_height="wrap_content"
         tools:context=".MainActivity">
 
-        <!-- set Banner ad position in UI layout design -->
-        <com.google.android.gms.ads.AdView
-            xmlns:ads="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/adView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_alignParentBottom="true"
-            ads:adSize="BANNER"
-            ads:adUnitId="@string/admob_banner_id">
-        </com.google.android.gms.ads.AdView>
+<!--        &lt;!&ndash; set Banner ad position in UI layout design &ndash;&gt;-->
+<!--        <com.google.android.gms.ads.AdView-->
+<!--            xmlns:ads="http://schemas.android.com/apk/res-auto"-->
+<!--            android:id="@+id/adView"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_centerHorizontal="true"-->
+<!--            android:layout_alignParentBottom="true"-->
+<!--            ads:adSize="BANNER"-->
+<!--            ads:adUnitId="@string/admob_banner_id">-->
+<!--        </com.google.android.gms.ads.AdView>-->
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tablelayout"
