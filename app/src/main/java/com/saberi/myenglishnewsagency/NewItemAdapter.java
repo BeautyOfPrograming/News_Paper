@@ -37,7 +37,9 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.reward.RewardItem;
 import com.google.android.gms.ads.reward.RewardedVideoAd;
+import com.google.android.gms.ads.reward.RewardedVideoAdListener;
 import com.google.android.gms.ads.rewarded.RewardedAd;
 import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback;
 import com.saberi.myenglishnewsagency.retrofit.DownloadImage;
@@ -66,7 +68,7 @@ import retrofit2.http.Url;
 
 import static androidx.constraintlayout.widget.Constraints.TAG;
 
-public class NewItemAdapter extends RecyclerView.Adapter<NewItemAdapter.ItemViewHolder> {
+public class NewItemAdapter extends RecyclerView.Adapter<NewItemAdapter.ItemViewHolder> implements RewardedVideoAdListener {
 
 //    this is a new test
 
@@ -78,10 +80,10 @@ public class NewItemAdapter extends RecyclerView.Adapter<NewItemAdapter.ItemView
     private AdView adView;
 
     //
-    private RewardedAd mRewardedAd;
+    private RewardedVideoAd mRewardedAd;
 
     private RewardedVideoAd AdMobrewardedVideoAd;
-    private String AdId = "ca-app-pub-1981355908194102/1488342268";
+    private String AdId = "ca-app-pub-3940256099942544/5224354917";
 
 
     //
@@ -102,8 +104,16 @@ public class NewItemAdapter extends RecyclerView.Adapter<NewItemAdapter.ItemView
     public ItemViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
 
 
-        MobileAds.initialize(context);
-        loadRewardedVideoAd();
+//        MobileAds.initialize(context,"ca-app-pub-3940256099942544/522435491");
+        MobileAds.initialize(context, "ca-app-pub-1981355908194102~2792672342");
+        mRewardedAd = MobileAds.getRewardedVideoAdInstance(context);
+        mRewardedAd.setRewardedVideoAdListener(this);
+        mRewardedAd.loadAd("ca-app-pub-1981355908194102/3324716859", new AdRequest.Builder().build());
+
+
+
+//        mRewardedAd.loadAd("cca-app-pub-1981355908194102/1488342268", new AdRequest.Builder().build());
+//        loadRewardedVideoAd();
 
 
         view = LayoutInflater.from(
@@ -151,13 +161,12 @@ public class NewItemAdapter extends RecyclerView.Adapter<NewItemAdapter.ItemView
 
 
             Log.e("mypicasso_: ", imageUrl);
-//            Toast.makeText(context, title, Toast.LENGTH_LONG).show();
 
 
         }
 //         Picasso.get().load(imageUrl).into(itemViewHolder.imageUrl);
         else {
-            Picasso.get().load(R.drawable.news).into(itemViewHolder.imageUrl);
+            Picasso.get().load(R.drawable.sajad).into(itemViewHolder.imageUrl);
 
         }
 
@@ -168,7 +177,6 @@ public class NewItemAdapter extends RecyclerView.Adapter<NewItemAdapter.ItemView
                 try {
 
 
-                    showRewardedVideoAd();
                     // Set animation to shareButton
                     Animation rotation = AnimationUtils.loadAnimation(context, R.anim.rotation);
                     itemViewHolder.shareMe.startAnimation(rotation);
@@ -212,6 +220,13 @@ public class NewItemAdapter extends RecyclerView.Adapter<NewItemAdapter.ItemView
             @Override
             public void onClick(View view) {
                 // The below tow lines are for rotating readMore Button
+                if(mRewardedAd.isLoaded()){
+
+//                showRewardedVideoAd();
+                mRewardedAd.show();
+
+              }
+
                 Animation animation = AnimationUtils.loadAnimation(context, R.anim.read_more_rotation);
                 itemViewHolder.readMore.startAnimation(animation);
 
@@ -246,6 +261,46 @@ public class NewItemAdapter extends RecyclerView.Adapter<NewItemAdapter.ItemView
         return items.size();
     }
 
+    @Override
+    public void onRewardedVideoAdLoaded() {
+
+    }
+
+    @Override
+    public void onRewardedVideoAdOpened() {
+
+    }
+
+    @Override
+    public void onRewardedVideoStarted() {
+
+    }
+
+    @Override
+    public void onRewardedVideoAdClosed() {
+
+    }
+
+    @Override
+    public void onRewarded(RewardItem rewardItem) {
+
+    }
+
+    @Override
+    public void onRewardedVideoAdLeftApplication() {
+
+    }
+
+    @Override
+    public void onRewardedVideoAdFailedToLoad(int i) {
+
+    }
+
+    @Override
+    public void onRewardedVideoCompleted() {
+
+    }
+
     class ItemViewHolder extends RecyclerView.ViewHolder {
         TextView title, content, author, date, url;
         ImageView imageUrl;
@@ -271,7 +326,6 @@ public class NewItemAdapter extends RecyclerView.Adapter<NewItemAdapter.ItemView
 
             AdRequest adRequest = new AdRequest.Builder().build();
             adView.loadAd(adRequest);
-
 
 //            return  new ItemViewHolder(itemView);
 
@@ -363,10 +417,6 @@ public class NewItemAdapter extends RecyclerView.Adapter<NewItemAdapter.ItemView
     public void showRewardedVideoAd() {
 
 
-
-
-
-        
         if (AdMobrewardedVideoAd.isLoaded())//Checking If Ad is Loaded or Not
 
         {
@@ -374,7 +424,7 @@ public class NewItemAdapter extends RecyclerView.Adapter<NewItemAdapter.ItemView
 
             // showing Video Ad
 
-            Log.d("ad works","workssss");
+            Log.d("ad works", "workssss");
             Toast.makeText(context, "add is showing now", Toast.LENGTH_LONG).show();
             AdMobrewardedVideoAd.show();
 
@@ -382,7 +432,7 @@ public class NewItemAdapter extends RecyclerView.Adapter<NewItemAdapter.ItemView
 
             // Loading Rewarded Video Ad
 
-            AdMobrewardedVideoAd.loadAd("ca-app-pub-1981355908194102~2792672342", new AdRequest.Builder().build());
+            AdMobrewardedVideoAd.loadAd("ca-app-pub-3940256099942544/5224354917", new AdRequest.Builder().build());
 
             Toast.makeText(context, "add is not showing now", Toast.LENGTH_LONG).show();
 
