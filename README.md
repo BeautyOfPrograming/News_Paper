@@ -1,8 +1,8 @@
 # News_Paper
-News app is a light and fast news app that displays news from different sources, hope like my app, please leave comment and improve it.
+News app is a light and fast news app that displays news from different sources, hope like my app, please leave comment and on it.
 
 
-There are some photos of my apps below
+There are some photos of my app below
 
 ![abc](https://user-images.githubusercontent.com/77390118/105812327-32c58900-5fc3-11eb-9d29-08e12111893e.jpg)
 ![bbc-sport](https://user-images.githubusercontent.com/77390118/105812336-36f1a680-5fc3-11eb-988c-e9f54680b11f.jpg)
